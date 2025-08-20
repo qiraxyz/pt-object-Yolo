@@ -7,7 +7,7 @@ Pony Town vision model for detecting surrounding objects using Yolo11n pre-train
 Installation with PIP
 
 ```bash
-    pip install ultralytics
+pip install ultralytics
 ```
 
 see the detail : [ultralytics](https://docs.ultralytics.com/quickstart/#custom-installation-methods)
@@ -18,7 +18,7 @@ see the detail : [ultralytics](https://docs.ultralytics.com/quickstart/#custom-i
 To train test, run the following command
 
 ```bash
-  yolo train data=dataset/datav2/data.yaml model=yolo11n.pt epochs=500 lr0=0.001
+yolo train data=dataset/datav2/data.yaml model=yolo11n.pt epochs=500 lr0=0.001
 ```
 
 
