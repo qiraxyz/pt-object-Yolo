@@ -1,17 +1,18 @@
+import sys
+
+import cv2 as cv
 from ultralytics import YOLO
 
 # Load a model
 model = YOLO("models/v3/best.pt")  # pretrained YOLO11n model
 
-# Run batched inference on a list of images
-results = model(["dataoutput/img.png"])  # return a list of Results objects
+img = cv.imread(cv.samples.findFile("dataoutput/img.png"))
 
-# Process results list
-for result in results:
-    boxes = result.boxes  # Boxes object for bounding box outputs
-    masks = result.masks  # Masks object for segmentation masks outputs
-    keypoints = result.keypoints  # Keypoints object for pose outputs
-    probs = result.probs  # Probs object for classification outputs
-    obb = result.obb  # Oriented boxes object for OBB outputs
-    result.show()  # display to screen
-    result.save(filename="batch/result.png")  # save to disk
+if img is None:
+    sys.exit("Could not read the image.")
+
+cv.imshow("Display window", img)
+k = cv.waitKey(0)
+
+if k == ord("s"):
+    cv.imwrite("starry_night.png", img)
